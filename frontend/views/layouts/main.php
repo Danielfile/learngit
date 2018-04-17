@@ -5,6 +5,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\NavBar;
+use yii\bootstrap\Nav;
 use frontend\assets\AppAsset;
 
 AppAsset::register($this);
@@ -51,6 +52,11 @@ AppAsset::register($this);
             . Html::endForm()
             . '</li>';
     }
+
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => $menuItems,
+    ]);
 
     NavBar::end();
     ?>

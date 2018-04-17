@@ -72,11 +72,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        //$this->layout = false;
-
-        //$menus = Menu::getUserMenus(Yii::$app->user->id);
         Yii::$app->view->params['user'] = Yii::$app->getUser()->identity;
-        //Yii::$app->view->params['menus'] = $menus ? $menus : [];
 
         return $this->render('index');
     }
