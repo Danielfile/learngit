@@ -72,6 +72,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        //$this->layout = false;
+
+        //$menus = Menu::getUserMenus(Yii::$app->user->id);
+        Yii::$app->view->params['user'] = Yii::$app->getUser()->identity;
+        //Yii::$app->view->params['menus'] = $menus ? $menus : [];
+
         return $this->render('index');
     }
 
@@ -120,9 +126,9 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                Yii::$app->session->setFlash('success', '发送成功!');
             } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+                Yii::$app->session->setFlash('error', '发送失败!');
             }
 
             return $this->refresh();
