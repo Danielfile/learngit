@@ -38,12 +38,6 @@ class UploadForm extends Model
         }
 
         $uploadFile = new UploadFile();
-        /*$user->username = $this->username;
-        $user->email = $this->email;
-        $user->setPassword($this->password);
-        $user->generateAuthKey();
-
-        return $user->save() ? $user : null;*/
 
         return $uploadFile->save() ? $uploadFile : null;
     }

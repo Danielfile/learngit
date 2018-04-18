@@ -42,7 +42,7 @@ AppAsset::register($this);
         $menuItems[] = ['label' => '注册', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => '关于', 'url' => ['/site/about']];
     } else {
-        $menuItems[] = ['label' => '上传', 'url' => ['/uploads/index']];
+        $menuItems[] = ['label' => '上传', 'url' => ['/upload/index']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
