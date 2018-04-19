@@ -4,15 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Shonor */
+/* @var $model app\models\Research */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Shonors', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Researches', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="shonor-view">
-
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="research-view">
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -28,10 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'snum',
-            'stime',
-            'sname',
-            'sid',
+            'tid',
+            'rname',
+            'type',
+            'from',
         ],
     ]) ?>
 

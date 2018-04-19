@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use yii\bootstrap\NavBar;
 use yii\bootstrap\Nav;
 use frontend\assets\AppAsset;
+use common\models\User;
 
 AppAsset::register($this);
 ?>
@@ -27,8 +28,6 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::encode($this->title),
-        'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -43,6 +42,31 @@ AppAsset::register($this);
         $menuItems[] = ['label' => '关于', 'url' => ['/site/about']];
     } else {
         $menuItems[] = ['label' => '上传', 'url' => ['/upload/index']];
+        $model = Yii::$app->user;
+        $who = User::findOne(['id' => $model->id])->attributes;
+        switch ($who['who']) {
+            case 0:
+                $menuItems[] = ['label' => '竞赛', 'url' => ['/competition/index']];
+                $menuItems[] = ['label' => '科研', 'url' => ['/research/index']];
+                $menuItems[] = ['label' => '论文', 'url' => ['/paper/index']];
+                $menuItems[] = ['label' => '教师', 'url' => ['/teacher/index']];
+                break;
+            case 1:
+                $menuItems[] = ['label' => '竞赛', 'url' => ['/competition/index']];
+                $menuItems[] = ['label' => '科研', 'url' => ['/research/index']];
+                $menuItems[] = ['label' => '论文', 'url' => ['/paper/index']];
+                $menuItems[] = ['label' => '教师', 'url' => ['/teacher/index']];
+                break;
+            case 2:
+                $menuItems[] = ['label' => '获奖', 'url' => ['/shonor/index']];
+                $menuItems[] = ['label' => '实习', 'url' => ['/internship/index']];
+                $menuItems[] = ['label' => '毕业', 'url' => ['/graduation/index']];
+                $menuItems[] = ['label' => '学生', 'url' => ['/student/index']];
+                break;
+            default:
+                $menuItems[] = '';
+                break;
+        }
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
@@ -54,7 +78,7 @@ AppAsset::register($this);
     }
 
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => $menuItems,
     ]);
 

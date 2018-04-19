@@ -17,6 +17,7 @@ use yii\web\IdentityInterface;
  * @property string $email
  * @property string $auth_key
  * @property integer $status
+ * @property integer $who
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
@@ -167,6 +168,11 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    public function getWho(){
+        return $this::find()->select('who')->where(['id'=>$this->id])->one();
+    }
+
 }
 
 ?>
