@@ -46,6 +46,8 @@ class UploadSearch extends Upload
             'query' => $query,
         ]);
 
+        $dataProvider->pagination->defaultPageSize =10;
+
         $this->load($params);
 
         if (!$this->validate()) {

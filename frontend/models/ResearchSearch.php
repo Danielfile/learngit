@@ -47,6 +47,8 @@ class ResearchSearch extends Research
             'query' => $query,
         ]);
 
+        $dataProvider->pagination->defaultPageSize =10;
+
         $this->load($params);
 
         if (!$this->validate()) {
